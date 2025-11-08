@@ -40,12 +40,18 @@ android {
 }
 
 dependencies {
-    //GSON
-    implementation("com.google.code.gson:gson:2.8.8")
-    implementation(libs.androidx.compose.ui.graphics)
 
     val nav_version = "2.9.5"
     implementation("androidx.navigation:navigation-compose:$nav_version")
+
+    // Dependensi untuk serialisasi JSON
+    implementation("com.google.code.gson:gson:2.10.1")
+
+    // Coil untuk Image Loading (termasuk dukungan GIF)
+    implementation("io.coil-kt:coil-compose:2.6.0")
+    implementation("io.coil-kt:coil-gif:2.6.0")
+
+    //Data Store
     implementation("androidx.datastore:datastore-preferences:1.1.7")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.3")
     implementation("com.google.accompanist:accompanist-drawablepainter:0.35.0-alpha")

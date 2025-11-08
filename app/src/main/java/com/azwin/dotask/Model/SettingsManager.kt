@@ -18,35 +18,31 @@ class SettingsManager(private val context: Context) {
         val PLAYER_LEVEL = intPreferencesKey("player_level")
         val PLAYER_EXP = intPreferencesKey("player_exp")
         val PLAYER_STAMINA = intPreferencesKey("player_stamina")
+        val MONSTER_HP = intPreferencesKey("monster_hp")
     }
 
-    suspend fun savePlayerStats(player: PlayerData) {
+    suspend fun saveGameStats(player: PlayerData, monsterHp: Int) {
         context.dataStore.edit { settings ->
             settings[PLAYER_LEVEL] = player.level
             settings[PLAYER_EXP] = player.exp
             settings[PLAYER_STAMINA] = player.stamina
+            settings[MONSTER_HP] = monsterHp
         }
     }
 
-    val playerStatsFlow: Flow<PlayerData> = context.dataStore.data.map { preferences ->
-        val level = preferences[PLAYER_LEVEL] ?: 1
-        val exp = preferences[PLAYER_EXP] ?: 0
-        val stamina = preferences[PLAYER_STAMINA] ?: 1800
+    val gameStatsFlow: Flow<Pair<PlayerData, Int>> = context.dataStore.data.map { preferences ->
+        val playerLevel = preferences[PLAYER_LEVEL] ?: 1
+        val playerExp = preferences[PLAYER_EXP] ?: 0
+        val playerStamina = preferences[PLAYER_STAMINA] ?: 1800
+        // Default HP for the first monster (Slime Ghost) is 900
+        val monsterHp = preferences[MONSTER_HP] ?: 900
 
-        //Recount starts based on level rn
-        val maxExp = 100 * level
-        val maxStamina = 1800
-
-        //I make this damage to contant(static) for now, i will made adjustment weapone feature soon
-        val damage = 1
-
-        PlayerData(
-            level = level,
-            exp = exp,
-            stamina = stamina,
-            maxExp = maxExp,
-            MaxStamina = maxStamina,
-            damage = damage
+        val player = PlayerData(
+            level = playerLevel,
+            exp = playerExp,
+            stamina = playerStamina
         )
+
+        Pair(player, monsterHp)
     }
 }

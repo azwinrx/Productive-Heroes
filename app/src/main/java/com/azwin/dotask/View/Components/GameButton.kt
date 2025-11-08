@@ -37,7 +37,7 @@ fun GameButton(
             painter = painterResource(id = backgroundRes),
             contentDescription = null,
             modifier = Modifier.size(width = 100.dp, height = 50.dp),
-            contentScale = ContentScale.FillBounds
+            contentScale = ContentScale.Fit
         )
     }
 }

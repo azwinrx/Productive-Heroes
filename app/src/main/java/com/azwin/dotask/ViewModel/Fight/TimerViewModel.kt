@@ -5,16 +5,22 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.azwin.dotask.Data.SettingsManager
 import com.azwin.dotask.Model.Fight.Statistic.MonsterData
+import com.azwin.dotask.Model.Fight.Statistic.PlayerData
 import com.azwin.dotask.Model.Fight.TimerData
-import com.azwin.dotask.Model.PlayerRepository
 import com.azwin.dotask.R
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlin.time.Duration.Companion.seconds
 
 open class TimerViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val settingsManager = SettingsManager(application)
 
     //Monster Detail
     val allMonsters = listOf(
@@ -54,57 +60,67 @@ open class TimerViewModel(application: Application) : AndroidViewModel(applicati
     private val _monsterHp = mutableStateOf(_monster.value.maxHp)
     open val monsterHp: State<Int> = _monsterHp
 
-    // Ambil state pemain langsung dari sumber tunggal (Single Source of Truth)
-    val player = PlayerRepository.playerState
+    private val _player = MutableStateFlow(PlayerData())
+    val player = _player.asStateFlow()
 
-    private val _playerDamage = mutableStateOf(player.value.damage)
-    open val playerDamage: State<Int> = _playerDamage
-
-    //Timer Detail (Status)
     private val _timer = mutableStateOf(TimerData())
     open val timer: State<TimerData> = _timer
 
     private var timerJob: Job? = null
+
+    init {
+        viewModelScope.launch {
+            val (playerData, savedMonsterHp) = settingsManager.gameStatsFlow.first()
+            _player.value = playerData
+            // Make sure the loaded monster HP doesn't exceed the max HP of the default monster
+            val defaultMonsterMaxHp = _monster.value.maxHp
+            _monsterHp.value = if (savedMonsterHp > defaultMonsterMaxHp) defaultMonsterMaxHp else savedMonsterHp
+        }
+    }
+
+    private fun saveGameStats() {
+        viewModelScope.launch {
+            settingsManager.saveGameStats(_player.value, _monsterHp.value)
+        }
+    }
 
     open fun selectMonster(selectedMonster: MonsterData) {
         timerJob?.cancel()
         _timer.value = _timer.value.copy(isTimerRunning = false, isRestRunning = false)
         _monster.value = selectedMonster
         _monsterHp.value = selectedMonster.maxHp
+        saveGameStats()
     }
 
-    //Action for attack
     open fun onAttackClicked() {
         if (player.value.stamina <= 0) return
-
         timerJob?.cancel()
         _timer.value = _timer.value.copy(isTimerRunning = true)
-        _playerDamage.value = player.value.damage
         startTimer()
     }
 
-    //Action for pause
     open fun onPauseClicked() {
         timerJob?.cancel()
         _timer.value = _timer.value.copy(isTimerRunning = false)
     }
 
-    //Action for reset
     open fun onResetClicked() {
         timerJob?.cancel()
         _timer.value = _timer.value.copy(isTimerRunning = false)
         _monsterHp.value = _monster.value.maxHp
+        saveGameStats()
     }
 
-    //rest click
     open fun onRestClicked() {
         if (_timer.value.isTimerRunning) return
         timerJob?.cancel()
         _timer.value = _timer.value.copy(isTimerRunning = false, isRestRunning = true)
         timerJob = viewModelScope.launch {
-            while (player.value.stamina < player.value.MaxStamina) {
+            while (_player.value.stamina < _player.value.MaxStamina) {
                 delay(1.seconds)
-                // Implementasi penambahan stamina perlu dipindahkan ke Repository nanti
+                val newStamina = (_player.value.stamina + 6).coerceAtMost(_player.value.MaxStamina)
+                _player.value = _player.value.copy(stamina = newStamina)
+                saveGameStats()
             }
             _timer.value = _timer.value.copy(isRestRunning = false)
         }
@@ -115,27 +131,38 @@ open class TimerViewModel(application: Application) : AndroidViewModel(applicati
         _timer.value = _timer.value.copy(isRestRunning = false)
     }
 
-    //Start timer
     private fun startTimer() {
         timerJob = viewModelScope.launch {
             while (_monsterHp.value > 0) {
-                if (player.value.stamina <= 0) {
+                if (_player.value.stamina <= 0) {
                     onPauseClicked()
                     break
                 }
                 delay(1.seconds)
-                _monsterHp.value -= _playerDamage.value
-                // Implementasi pengurangan stamina perlu dipindahkan ke Repository nanti
+                _monsterHp.value -= _player.value.damage
+                _player.value = _player.value.copy(stamina = _player.value.stamina - 1)
+                saveGameStats()
             }
 
             if (_monsterHp.value <= 0) {
-                // Panggil fungsi terpusat untuk menambah EXP
-                PlayerRepository.addExp(monster.value.expGain)
+                addExp(monster.value.expGain)
+                // Reset monster HP for the next fight
+                _monsterHp.value = _monster.value.maxHp 
+                saveGameStats()
             }
 
             _timer.value = _timer.value.copy(isTimerRunning = false)
-            _monsterHp.value = _monster.value.maxHp
         }
     }
-    // Logika level up sudah tidak ada di sini, karena sudah terpusat di PlayerRepository
+
+    open fun addExp(exp: Int) {
+        val newExp = _player.value.exp + exp
+        if (newExp >= _player.value.maxExp) {
+            val remainingExp = newExp - _player.value.maxExp
+            _player.value = _player.value.copy(level = _player.value.level + 1, exp = remainingExp)
+        } else {
+            _player.value = _player.value.copy(exp = newExp)
+        }
+        saveGameStats()
+    }
 }

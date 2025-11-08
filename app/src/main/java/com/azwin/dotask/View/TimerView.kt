@@ -32,6 +32,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -47,10 +48,10 @@ import com.azwin.dotask.ViewModel.Fight.TimerViewModel
 import com.azwin.dotask.ui.theme.jersey25
 import com.google.accompanist.drawablepainter.rememberDrawablePainter
 
-// 1. STATEFUL Composable: Bertugas menyediakan data dari ViewModel
+
 @Composable
 fun TimerView(timerViewModel: TimerViewModel = viewModel()) {
-    // Menggunakan collectAsState untuk mendengarkan StateFlow dari Repository
+
     val player by timerViewModel.player.collectAsState()
     val monster by timerViewModel.monster
     val monsterHp by timerViewModel.monsterHp
@@ -71,7 +72,7 @@ fun TimerView(timerViewModel: TimerViewModel = viewModel()) {
     )
 }
 
-// 2. STATELESS Composable: Hanya menampilkan UI
+//STATELESS
 @Composable
 fun TimerViewContent(
     player: PlayerData,
@@ -110,12 +111,12 @@ fun TimerViewContent(
             ) {
                 StatisticBar(
                     progress = expBarProgress,
-                    color = Color.Green,
+                    color = colorResource(R.color.Green),
                     text = "Level : ${player.level} (${player.exp}/${player.maxExp})"
                 )
                 StatisticBar(
                     progress = playerStaminaProgress,
-                    color = Color.Blue,
+                    color = colorResource(R.color.Blue),
                     text = "${player.stamina}/${player.MaxStamina}"
                 )
             }
@@ -190,7 +191,7 @@ fun TimerViewContent(
 
                 StatisticBar(
                     progress = monsterHpProgress,
-                    color = Color.Red,
+                    color = colorResource(R.color.Red),
                     text = "$monsterHp/${monster.maxHp}"
                 )
             }
@@ -230,7 +231,6 @@ fun TimerViewContent(
     }
 }
 
-// 3. Pratinjau sekarang memanggil versi stateless dengan data palsu
 @Preview(showBackground = true, showSystemUi = true, apiLevel = 35)
 @Composable
 fun TimerViewPreview() {

@@ -14,8 +14,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp // <-- Import yang diperlukan
+import com.azwin.dotask.R
 import com.azwin.dotask.ui.theme.jersey25
 
 @Composable
@@ -25,15 +29,17 @@ fun StatisticBar(progress: Float, color: Color, text: String) {
             .fillMaxWidth()
             .padding(top = 8.dp)
             .height(24.dp)
-            .border(width = 1.5.dp, color = Color.White, shape = RoundedCornerShape(5.dp)),
+            .background(color = Color.Black.copy(alpha = 0.68f))
+            .border(width = 1.5.dp, color = Color.Black, shape = RoundedCornerShape(5.dp)),
     ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth(fraction = progress)
                 .fillMaxHeight()
-                .background(color = color, shape = RoundedCornerShape(5.dp)), // Disesuaikan shape-nya
+                .background(color = color, shape = RoundedCornerShape(5.dp))
         )
         Box(
+
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
         ){
@@ -41,8 +47,19 @@ fun StatisticBar(progress: Float, color: Color, text: String) {
                 fontFamily = jersey25,
                 text = text,
                 color = Color.White,
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                fontSize = 16.sp
             )
         }
     }
+}
+
+@Preview(apiLevel = 35)
+@Composable
+fun StatBarPreview() {
+    StatisticBar(
+        progress = 0.7f,
+        color = colorResource(R.color.Red),
+        text = "70%"
+    )
 }
