@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.azwin.dotask"
+    namespace = "com.azwin.productiveheroes"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.azwin.dotask"
+        applicationId = "com.azwin.productiveheroes"
         minSdk = 24
         targetSdk = 36
         versionCode = 1

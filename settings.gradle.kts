@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Do Task"
+rootProject.name = "Productive Heroes"
 include(":app")
  
