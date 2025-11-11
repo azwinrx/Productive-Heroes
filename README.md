@@ -11,56 +11,59 @@
 
 ---
 
-**Bosan dengan to-do list yang membosankan?** 🥱  
-**Productive Heroes** mengubah produktivitas Anda menjadi petualangan RPG yang seru! Selesaikan quest, kalahkan monster, dan naikkan level karakter Anda sambil menyelesaikan tugas sehari-hari! 🎮✨
+**Tired of boring to-do lists?** 🥱  
+**Productive Heroes** transforms your productivity into an exciting RPG adventure! Complete quests, defeat monsters, and level up your character while finishing your daily tasks! 🎮✨
 
-[✨ Features](#-fitur-utama) • [🚀 Installation](#-instalasi) • [🎯 How to Use](#-cara-penggunaan) • [🛠️ Tech Stack](#️-tech-stack) • [📸 Screenshots](#-screenshots)
+[✨ Features](#-key-features) • [🚀 Installation](#-installation) • [🎯 How to Use](#-how-to-use) • [🛠️ Tech Stack](#️-tech-stack) • [📸 Screenshots](#-screenshots)
 
 </div>
 
 ---
 
-## ✨ Fitur Utama
+## ✨ Key Features
 
 ### 🗡️ **Quest Management System**
-- 📝 **Tambah Quest dengan Mudah** - Buat tugas baru dengan cepat dan intuitif
-- ✅ **Selesaikan & Hapus Quest** - Tandai quest sebagai selesai atau hapus yang tidak perlu
-- 🎨 **UI Fantasi yang Menarik** - Desain bergaya RPG yang membuat manajemen tugas jadi menyenangkan
-- 💾 **Auto-Save** - Semua quest tersimpan otomatis menggunakan DataStore
+- 📝 **Add Quests Easily** - Create new tasks quickly and intuitively.
+- ✅ **Complete & Delete Quests** - Mark quests as complete to gain +100 EXP or delete them to cancel.
+- 🎨 **Pixel Game-style UI** - An RPG Pixel-style design that makes task management fun.
+- 💾 **Auto-Save** - All quests are automatically saved using DataStore.
 
 ### ⚔️ **Combat & Timer System**
-- 🐉 **Lawan 4 Monster Unik**:
+- 🐉 **Fight 4 Unique Monsters**:
   - 👻 **Slime Ghost** (900 HP, +50 EXP)
   - 🦎 **Baby Lizard** (1,200 HP, +100 EXP)
   - 🌳 **Evil Tree** (1,500 HP, +150 EXP)
   - 👤 **The Unknown** (1,800 HP, +200 EXP)
-- ⏱️ **Real-time Combat Timer** - Serang monster secara otomatis dengan sistem timer
-- 🛡️ **Stamina System** - Kelola stamina untuk bertarung lebih lama
-- 💤 **Rest & Recovery** - Istirahatkan karakter untuk memulihkan stamina
+- ⏱️ **Real-time Combat Timer** - Attack monsters automatically with a countdown timer system.
+- 🛡️ **Stamina System** - Manage stamina to fight longer.
+- 💤 **Rest & Recovery** - Rest your character to recover stamina, adapting the break concept from the Pomodoro timer.
 
 ### 📊 **Character Progression**
-- 🆙 **Level Up System** - Dapatkan EXP dari menyelesaikan quest dan mengalahkan monster
-- 📈 **Exp Bar** - Tracking progress menuju level berikutnya secara visual
-- 💪 **Stat Growth** - Stats karakter meningkat seiring level bertambah
-- 🏆 **Persistent Progress** - Progress tersimpan bahkan setelah menutup aplikasi
+- 🆙 **Level Up System** - Gain EXP from completing quests and defeating monsters.
+- 📈 **Exp Bar** - Visually track your progress to the next level.
+- 💪 **Stat Growth** - Character stats increase as you level up.
+- 🏆 **Persistent Progress** - Progress is saved even after closing the app.
 
-### 🎮 **Modern UI/UX**
-- 🖼️ **Fantasy Theme** - Desain arena pertempuran yang imersif
-- 📱 **Responsive Layout** - Optimized untuk berbagai ukuran layar
-- 🎨 **Custom Fonts** - Jersey25 dan Pixelify Sans untuk nuansa retro gaming
-- 🔄 **Smooth Animations** - Transisi dan animasi yang halus menggunakan Compose
+### 🎮 **UI/UX**
+- 🖼️ **Fantasy Theme** - Immersive battle arena design.
+- 📱 **Responsive Layout** - Optimized for various screen sizes.
+- 🎨 **Fonts** - Jersey25 and Pixelify Sans for a retro gaming feel.
 
 ---
 
-## 🚀 Instalasi
+## 🚀 Installation
+### Quick Install
+- Download APK from [release](https://github.com/azwinrx/Productive-Heroes/releases/tag/v1.0)
+- Install
+- Ready to open
 
 ### Prerequisites
-- 📱 **Android Studio** (Ladybug 2024.2.1 atau lebih baru)
-- ☕ **JDK 11** atau lebih tinggi
-- 🤖 **Android SDK API 24+** (Android 7.0 Nougat atau lebih baru)
+- 📱 **Android Studio** (Ladybug 2024.2.1 or newer)
+- ☕ **JDK 11** or higher
+- 🤖 **Android SDK API 24+** (Android 7.0 Nougat or newer)
 - 📦 **Gradle 8.13**
 
-### Langkah Instalasi
+### Installation Steps
 
 1. **Clone Repository**
    ```bash
@@ -68,76 +71,74 @@
    cd Task-Hero
    ```
 
-2. **Buka di Android Studio**
-   - Pilih `File` → `Open`
-   - Navigasi ke folder project
-   - Klik `OK` dan tunggu Gradle sync selesai
+2. **Open in Android Studio**
+   - Select `File` → `Open`
+   - Navigate to the project folder
+   - Click `OK` and wait for Gradle sync to finish
 
 3. **Build & Run**
-   - Hubungkan device Android atau jalankan emulator
-   - Klik tombol `Run` (▶️) di Android Studio
-   - Atau gunakan shortcut `Shift + F10`
+   - Connect an Android device or run an emulator
+   - Click the `Run` (▶️) button in Android Studio
+   - Or use the shortcut `Shift + F10`
 
-4. **Build APK (Opsional)**
+4. **Build APK (Optional)**
    ```bash
    ./gradlew assembleDebug
    ```
-   APK akan tersedia di: `app/build/outputs/apk/debug/`
+   The APK will be available at: `app/build/outputs/apk/debug/`
 
 ---
 
-## 🎯 Cara Penggunaan
+## 🎯 How to Use
 
 ### 📝 Quest Mode
-1. **Tambah Quest Baru**
-   - Masukkan nama quest di text field
-   - Tekan tombol `+` untuk menambahkan
-   - Quest muncul dalam bentuk kartu yang menarik
+1. **Add a New Quest**
+   - Enter the quest name in the text field.
+   - Press the `+` button to add.
+   - The quest appears as an attractive card.
 
-2. **Selesaikan Quest**
-   - Tekan tombol **✓ Check** pada quest
-   - Dapatkan **+100 EXP** untuk progress karakter
-   - Quest akan hilang dari daftar
+2. **Complete a Quest**
+   - Press the **✓ (Check)** button on the quest.
+   - Get **+100 EXP** for character progress.
+   - The quest will disappear from the list.
 
-3. **Hapus Quest**
-   - Tekan tombol **🗑️ Delete** jika quest tidak relevan
-   - Tetap dapatkan **+100 EXP** sebagai bonus
+3. **Delete a Quest**
+   - Press the **X (Delete)** button if you want to cancel the quest.
+   - You won't get EXP and the quest will be removed.
 
 ### ⚔️ Timer Mode (Combat Arena)
-1. **Pilih Monster**
-   - Klik dropdown di atas gambar monster
-   - Pilih musuh yang ingin dilawan
-   - HP monster akan direset
+1. **Select a Monster**
+   - Click the dropdown below the monster GIF.
+   - Choose the enemy you want to fight.
+   - The monster's HP will be reset, and it will be ready for battle.
 
-2. **Mulai Pertempuran**
-   - Tekan tombol **⚔️ Fight** untuk menyerang
-   - Damage akan otomatis terjadi per detik
-   - Stamina akan berkurang seiring waktu
+2. **Start the Battle**
+   - Press the **⚔️ Fight** button to attack.
+   - Damage is dealt automatically every second.
+   - Stamina will decrease over time.
 
-3. **Kelola Stamina**
-   - Monitor bar stamina di bagian atas
-   - Tekan **💤 Rest** untuk memulihkan stamina
-   - Tekan **⏸️ Pause** untuk menghentikan serangan sementara
+3. **Manage Stamina**
+   - Monitor the stamina bar at the top.
+   - Press **💤 Rest** to recover stamina.
+   - Press **⏸️ Pause** to temporarily stop the attack.
 
-4. **Kalahkan Monster**
-   - Kurangi HP monster hingga 0
-   - Dapatkan EXP reward otomatis
-   - Monster respawn untuk pertempuran berikutnya
+4. **Defeat the Monster**
+   - Reduce the monster's HP to 0.
+   - Get an automatic EXP reward.
+   - The monster respawns for the next battle.
 
 5. **Level Up!**
-   - EXP bar terisi penuh = Level Up! 🎉
-   - Stats meningkat otomatis
-   - Stamina terisi penuh
+   - EXP bar full = Level Up! 🎉
+   - Stats increase automatically.
 
 ---
 
 ## 🛠️ Tech Stack
 
 ### 🏗️ Architecture & Frameworks
-- **Kotlin** - Modern programming language untuk Android
+- **Kotlin** - Modern programming language for Android
 - **Jetpack Compose** - Declarative UI toolkit
-- **MVVM Pattern** - Clean architecture dengan ViewModel
-- **Coroutines & Flow** - Asynchronous programming
+- **MVVM Architecture** - Clean architecture with ViewModel
 
 ### 📚 Libraries & Dependencies
 ```kotlin
@@ -179,55 +180,56 @@
 ---
 
 ## 📸 Screenshots
-
-> *Coming soon! Update dengan screenshot aplikasi Anda*
+![Screenshot1](screenshoots/Screenshot_20251111_142545.png)
+![Screenshot2](screenshoots/Screenshot_20251111_142556.png)
+![Screenshot3](screenshoots/Screenshot_20251111_142605.png)
 
 ---
 
 ## 🎨 Design Features
 
 ### 🖼️ Visual Elements
-- ✨ **Custom Pixel Art** - Monsters dan UI elements bergaya retro
-- 🎭 **Themed Backgrounds** - Arena pertempuran yang dinamis
-- 📊 **Animated Progress Bars** - Visual feedback yang jelas
-- 🎪 **Hit Effects** - Animasi serangan saat combat
+- ✨ **Pixel Art** - Retro-style monsters and UI elements
+- 🎭 **Themed Backgrounds** - Themed battle arenas
+- 📊 **Animated Progress Bars** - Clear visual feedback
+- 🎪 **Hit Effects** - Attack animations during combat
 
 ### 🎯 UX Highlights
-- 🔄 **Swipe Navigation** - Horizontal pager untuk berpindah mode
-- 📱 **Always-On Screen** - Layar tetap menyala saat combat
-- 💾 **Auto-Save** - Tidak ada tombol save, semua otomatis
-- 🎮 **Game-like Controls** - Button dengan feedback visual
+- 🔄 **Swipe Navigation** - Horizontal pager to switch modes
+- 📱 **Always-On Screen** - Screen stays on during combat
+- 💾 **Auto-Save** - No save button, everything is automatic
+- 🎮 **Game-like Controls** - Simple buttons for desired actions
 
 ---
 
-## 🔮 Roadmap & Future Features
+## 🔮 Roadmap & Future Features (if I'm not lazy hehehe)
 
-- [ ] 🏅 **Achievement System** - Unlock badges dan rewards
-- [ ] 🎨 **Character Customization** - Pilih avatar dan equipment
-- [ ] 📊 **Statistics Dashboard** - Lihat progress dan analytics
-- [ ] 🌐 **Cloud Sync** - Backup progress ke cloud
-- [ ] 🎵 **Sound Effects** - Audio feedback untuk actions
+- [ ] 🏅 **Achievement System** - Unlock badges and rewards
+- [ ] 🎨 **Character Customization** - Choose avatar and equipment
+- [ ] 📊 **Statistics Dashboard** - View progress and analytics
+- [ ] 🌐 **Cloud Sync** - Backup progress to the cloud
+- [ ] 🎵 **Sound Effects** - Audio feedback for actions
 - [ ] 🌙 **Dark Mode** - Theme customization
-- [ ] 🏆 **Leaderboard** - Compete dengan players lain
-- [ ] 🗓️ **Daily Quests** - Quest harian dengan bonus reward
+- [ ] 🏆 **Leaderboard** - Compete with other players
+- [ ] 🗓️ **Daily Quests** - Daily quests with bonus rewards
 
 ---
 
-## 🤝 Kontribusi
+## 🤝 Contributing
 
-Contributions, issues, dan feature requests sangat diterima! 🎉
+Contributions, issues, and feature requests are welcome! 🎉
 
-1. Fork project ini
-2. Create feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to branch (`git push origin feature/AmazingFeature`)
-5. Open Pull Request
+1. Fork this project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ---
 
 ## 👨‍💻 Developer
 
-**Azwin RX**
+**azwinrx**
 - GitHub: [@azwinrx](https://github.com/azwinrx)
 - Repository: [Task-Hero](https://github.com/azwinrx/Task-Hero)
 
@@ -239,22 +241,20 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 🙏 Acknowledgments
-
-- 🤖 **Gemini AI** - Untuk bantuan development dan debugging
-- 🎨 **Fantasy Game Assets** - Inspirasi untuk UI design
-- 💪 **Jetpack Compose Community** - Untuk resources dan tutorials
-- ⭐ **All Contributors** - Yang telah membantu project ini
-
+## 🙏 Asset Credits
+- Slime Ghost : https://id.pinterest.com/pin/72972456457340602/ or https://i.gifer.com/PcHK.gif
+- Baby Lizard : https://tenor.com/id/view/green-monster-cute-creatures-pixel-monster-cute-monsters-portal-fantasy-game-gif-27138031
+- Evil Tree : https://tenor.com/id/view/pixel-pixelart-pixel-game-cute-monster-mossy-gif-27137951
+- The Unknown : https://64.media.tumblr.com/01d0f90c74074e8a45825dea194b659f/tumblr_oklrofjnhU1uj3emso1_1280.gif
+- Background : https://craftpix.net/freebies/free-pixel-art-fantasy-2d-battlegrounds/
+- Scroll Kit : https://gamedeveloperstudio.itch.io/scroll-kit
 ---
 
 <div align="center">
 
-### ⭐ Jika project ini membantu, beri Star! ⭐
+### ⭐ If this project helps you, give it a Star! ⭐
 
-**Made with ❤️ and ☕ by Azwin RX**
-
-*Transform Your Productivity into an Adventure!* 🚀
+**I made this project just for fun :)**
 
 [⬆ Back to Top](#️-productive-heroes-️)
 
