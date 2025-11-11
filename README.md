@@ -233,7 +233,7 @@ Contributions, issues, and feature requests are welcome! 🎉
 
 **azwinrx**
 - GitHub: [@azwinrx](https://github.com/azwinrx)
-- Repository: [Task-Hero](https://github.com/azwinrx/Task-Hero)
+- Repository: [Productive-Heroes](https://github.com/azwinrx/Productive-Heroes)
 
 ---
 
