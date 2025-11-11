@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.azwin.dotask"
+    namespace = "com.azwin.productiveheroes"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.azwin.dotask"
+        applicationId = "com.azwin.productiveheroes"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -43,6 +43,15 @@ dependencies {
 
     val nav_version = "2.9.5"
     implementation("androidx.navigation:navigation-compose:$nav_version")
+
+    // Dependensi untuk serialisasi JSON
+    implementation("com.google.code.gson:gson:2.10.1")
+
+    // Coil untuk Image Loading (termasuk dukungan GIF)
+    implementation("io.coil-kt:coil-compose:2.6.0")
+    implementation("io.coil-kt:coil-gif:2.6.0")
+
+    //Data Store
     implementation("androidx.datastore:datastore-preferences:1.1.7")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.3")
     implementation("com.google.accompanist:accompanist-drawablepainter:0.35.0-alpha")
