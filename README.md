@@ -180,9 +180,11 @@
 ---
 
 ## 📸 Screenshots
-![Screenshot1](screenshoots/Screenshot_20251111_142545.png)
-![Screenshot2](screenshoots/Screenshot_20251111_142556.png)
-![Screenshot3](screenshoots/Screenshot_20251111_142605.png)
+<p align="center">
+  <img src="screenshoots/Screenshot_20251111_142545.png" width="270" />
+  <img src="screenshoots/Screenshot_20251111_142556.png" width="270" />
+  <img src="screenshoots/Screenshot_20251111_142605.png" width="270" />
+</p>
 
 ---
 
